@@ -1,12 +1,14 @@
 <template>
   <v-container>
-    <v-btn @click="abrirModal">ELiminar</v-btn>
+    <v-btn 
+      @click="abrirModal"
+    >
+      ELiminar
+    </v-btn>
     <v-dialog
       v-model="dialog"
       width="500"
     >
-      
-
       <v-card>
         <v-card-title class="text-h5 grey lighten-2">
             ¿Desea eliminar el libro?
@@ -23,7 +25,11 @@
           >
             I accept
           </v-btn>
-        <v-btn @click="dialog = false">Cerrar</v-btn>
+        <v-btn 
+          @click="dialog = false"
+        >
+          Cerrar
+        </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

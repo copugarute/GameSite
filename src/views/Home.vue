@@ -1,40 +1,18 @@
 <template>
-  <v-container>
-    <h1>Lista de juegos</h1>
-    <v-divider></v-divider>
-    <v-row justify="center">
-      <v-col v-for="juego in juegos" :key="juego.id">
-        <v-card>
-          <v-img></v-img>
-          <v-divider></v-divider>
-          <v-card-title>{{juego.nombre}}</v-card-title>
-          <v-card-actions>
-            <v-btn block color="primary"
-            @click="$router.push(`/juego/${juego.id}`)">Ver Más</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+  <cards-games/>
 </template>
 
 <script>
-// @ is an alias to /src
 
-import {mapActions, mapState} from 'vuex'
+import CardsGames from '@/components/CardsGames.vue'
+
 export default {
-  name: 'Home',
-  components: {
-    
-  },
-  computed:{
-    ...mapState(['juegos'])
-  },
-  methods:{
-    ...mapActions(['fetchJuegos'])
-  },
-  created(){
-    this.fetchJuegos()
-  }
+  name:'Home',
+  components:{CardsGames},
+
 }
 </script>
+
+<style>
+
+</style>

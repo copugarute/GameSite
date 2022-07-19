@@ -8,6 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     juegos:[],
+    user:'',
   },
   mutations: {
     ADD_JUEGO(state,juego){
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     RESET_JUEGOS(state){
       state.juegos=[]
+    },
+    traerEMail(state,nuevoUsuario){
+      state.user = nuevoUsuario
     }
   },
   actions: {

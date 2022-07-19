@@ -1,6 +1,8 @@
 <template>
   <v-app>
-    <nav-bar></nav-bar>
+    <nav-bar 
+      v-if="isPrivateRoute"
+    ></nav-bar>
     <v-main>
       <router-view/>
     </v-main>
@@ -17,5 +19,11 @@ export default {
   data: () => ({
     //
   }),
+  computed:{
+    isPrivateRoute(){
+     if(this.$route.meta.privado) return true
+     return false
+    }
+  }
 };
 </script>

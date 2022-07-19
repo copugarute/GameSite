@@ -1,45 +1,51 @@
 <template>
-  <v-app-bar
-      app
-      color="primary"
-      dark
+  <v-app-bar 
+    app 
+    color="primary" 
+    dark
+  >
+    <v-spacer></v-spacer>
+
+    <v-btn 
+      to="/agregar" 
+      color="secondary" 
+      text
+    > 
+      Agregar 
+    </v-btn>
+    <h3 class="m-3">{{ user }}</h3>
+    <v-btn 
+      @click="logout"
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        to="/juego"
-        color="secondary"
-        text
-      >
-      Agregar
-      </v-btn>
-    </v-app-bar>
+      LogOut
+    </v-btn>
+  </v-app-bar>
 </template>
 <script>
-  export default {
-    data: () => ({
-      drawer: false,
-      group: null,
-    }),
-  }
+import { getAuth, signOut } from "firebase/auth";
+import { mapState } from "vuex";
+export default {
+  name: "NavBar",
+  data: () => ({
+    drawer: false,
+    group: null,
+  }),
+  computed: {
+    ...mapState(["user"]),
+  },
+  methods: {
+    logout() {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+          this.$router.push("/login");
+        })
+        .catch((error) => {
+          // An error happened.
+          console.log(error);
+        });
+    },
+  },
+};
 </script>
